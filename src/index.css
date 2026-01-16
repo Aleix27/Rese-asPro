@@ -25,11 +25,31 @@
 /* Blob shapes */
 .blob {
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
-/* Glass effect */
+/* Glass effect - reduced blur on mobile */
 .glass {
-  @apply bg-white/60 backdrop-blur-xl border border-white/20;
+  @apply bg-white/60 border border-white/20;
+}
+
+@media (min-width: 768px) {
+  .glass {
+    @apply backdrop-blur-xl;
+  }
+}
+
+/* Reduce animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Custom Scrollbar */
