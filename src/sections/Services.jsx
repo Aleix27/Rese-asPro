@@ -97,9 +97,10 @@ export default function Services() {
 
                             {/* Emoji background */}
                             <motion.span
-                                animate={{ y: [0, -10, 0], rotate: [0, 5, -5, 0] }}
+                                animate={typeof window !== 'undefined' && window.innerWidth < 768 ? {} : { y: [0, -10, 0], rotate: [0, 5, -5, 0] }}
                                 transition={{ repeat: Infinity, duration: 4, delay: idx * 0.5 }}
                                 className="text-4xl md:text-6xl mb-2 md:mb-4 block drop-shadow-lg"
+                                style={{ willChange: "transform" }}
                             >
                                 {service.emoji}
                             </motion.span>

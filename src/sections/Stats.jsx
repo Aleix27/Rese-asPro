@@ -49,13 +49,13 @@ export default function Stats() {
 
     return (
         <section ref={ref} className="py-16 md:py-32 relative overflow-hidden">
-            {/* Animated background */}
+            {/* Animated background - disabled/simplified on mobile */}
             <motion.div
-                style={{ y }}
+                style={{ y: typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : y }}
                 className="absolute inset-0 -z-10"
             >
-                <div className="absolute top-1/2 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-primary/5 rounded-full blur-3xl" />
-                <div className="absolute bottom-0 right-1/4 w-48 md:w-80 h-48 md:h-80 bg-coral/5 rounded-full blur-3xl" />
+                <div className="absolute top-1/2 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-primary/5 rounded-full blur-2xl md:blur-3xl" />
+                <div className="absolute bottom-0 right-1/4 w-48 md:w-80 h-48 md:h-80 bg-coral/5 rounded-full blur-2xl md:blur-3xl" />
             </motion.div>
 
             {/* Wave divider top */}

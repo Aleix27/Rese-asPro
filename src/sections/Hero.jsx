@@ -35,24 +35,47 @@ const AnimatedBlob = ({ className, color }) => (
 
 export default function Hero() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
         const handleMouseMove = (e) => {
-            setMousePosition({
-                x: (e.clientX / window.innerWidth - 0.5) * 20,
-                y: (e.clientY / window.innerHeight - 0.5) * 20,
-            });
+            if (window.innerWidth >= 768) {
+                setMousePosition({
+                    x: (e.clientX / window.innerWidth - 0.5) * 20,
+                    y: (e.clientY / window.innerHeight - 0.5) * 20,
+                });
+            }
         };
         window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('resize', checkMobile);
+        };
     }, []);
 
     return (
         <section className="min-h-screen relative overflow-hidden flex items-center pt-24 md:pt-20 pb-12 md:pb-0">
-            {/* Animated background blobs */}
-            <AnimatedBlob className="w-64 md:w-96 h-64 md:h-96 -top-20 -left-20 blur-3xl opacity-40" color="linear-gradient(135deg, #6366F1, #8B5CF6)" />
-            <AnimatedBlob className="w-48 md:w-80 h-48 md:h-80 top-1/2 -right-20 blur-3xl opacity-30" color="linear-gradient(135deg, #F59E0B, #FB7185)" />
-            <AnimatedBlob className="w-40 md:w-72 h-40 md:h-72 bottom-20 left-1/3 blur-3xl opacity-25" color="linear-gradient(135deg, #38BDF8, #10B981)" />
+            {/* Animated background blobs - simplified on mobile */}
+            <AnimatedBlob
+                className={`w-64 md:w-96 h-64 md:h-96 -top-20 -left-20 ${isMobile ? 'blur-2xl opacity-20' : 'blur-3xl opacity-40'}`}
+                color="linear-gradient(135deg, #6366F1, #8B5CF6)"
+            />
+            <AnimatedBlob
+                className={`w-48 md:w-80 h-48 md:h-80 top-1/2 -right-20 ${isMobile ? 'blur-2xl opacity-15' : 'blur-3xl opacity-30'}`}
+                color="linear-gradient(135deg, #F59E0B, #FB7185)"
+            />
+            {!isMobile && (
+                <AnimatedBlob
+                    className="w-40 md:w-72 h-40 md:h-72 bottom-20 left-1/3 blur-3xl opacity-25"
+                    color="linear-gradient(135deg, #38BDF8, #10B981)"
+                />
+            )}
 
             {/* Floating decorative icons - hidden on mobile */}
             <FloatingIcon Icon={Star} className="top-32 left-[10%] text-accent" delay={0} />

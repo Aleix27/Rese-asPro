@@ -33,6 +33,7 @@ export default function LogoTicker() {
                     animate={{ x: "-50%" }}
                     transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                     className="flex gap-6 md:gap-12 pr-6 md:pr-12 whitespace-nowrap"
+                    style={{ willChange: "transform" }}
                 >
                     {[...companies, ...companies].map((company, idx) => (
                         <motion.div
