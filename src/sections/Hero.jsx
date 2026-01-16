@@ -135,12 +135,12 @@ export default function Hero() {
                             </motion.div>
                         </div>
 
-                        {/* Tagline */}
+                        {/* Tagline - smaller, centered, discrete */}
                         <motion.p
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.6 }}
-                            className="text-lg md:text-xl lg:text-2xl text-muted font-medium mb-8 md:mb-10 max-w-md mx-auto lg:mx-0"
+                            className="text-sm md:text-base text-muted/60 font-medium mb-8 md:mb-10 max-w-sm mx-auto text-center lg:text-center"
                         >
                             Convierte opiniones en clientes. Así de fácil.
                         </motion.p>
