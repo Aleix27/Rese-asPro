@@ -97,23 +97,52 @@ export default function Hero() {
                             <span className="text-xs md:text-sm font-bold text-primary">Clientes felices en toda España</span>
                         </motion.div>
 
-                        {/* Main headline - HUGE on mobile */}
-                        <h1 className="text-6xl sm:text-7xl md:text-7xl lg:text-8xl font-black leading-[0.9] mb-6 md:mb-8">
-                            <span className="block text-text">Reseñas</span>
-                            <span className="block gradient-text">que venden</span>
-                        </h1>
+                        {/* Main headline - HUGE and ANIMATED */}
+                        <motion.h1
+                            className="text-[4rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] font-black leading-[0.85] mb-6 md:mb-8"
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
+                        >
+                            <motion.span
+                                className="block text-text"
+                                initial={{ opacity: 0, x: -30 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.5, delay: 0.2 }}
+                            >
+                                Reseñas
+                            </motion.span>
+                            <motion.span
+                                className="block gradient-text"
+                                initial={{ opacity: 0, x: 30 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.5, delay: 0.4 }}
+                            >
+                                que venden
+                            </motion.span>
+                        </motion.h1>
 
                         {/* Tagline */}
-                        <p className="text-lg md:text-xl lg:text-2xl text-muted font-medium mb-8 md:mb-10 max-w-md mx-auto lg:mx-0">
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.6 }}
+                            className="text-lg md:text-xl lg:text-2xl text-muted font-medium mb-8 md:mb-10 max-w-md mx-auto lg:mx-0"
+                        >
                             Convierte opiniones en clientes. Así de fácil.
-                        </p>
+                        </motion.p>
 
-                        {/* CTA Buttons - centered and compact on mobile */}
-                        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-center lg:justify-start">
+                        {/* CTA Buttons - side by side, pill shape */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.8 }}
+                            className="flex flex-row gap-3 md:gap-4 items-center justify-center lg:justify-start"
+                        >
                             <motion.button
                                 whileHover={isMobile ? {} : { scale: 1.05, boxShadow: "0 20px 40px rgba(99, 102, 241, 0.3)" }}
                                 whileTap={{ scale: 0.95 }}
-                                className="w-auto px-8 md:px-8 py-4 md:py-5 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white font-bold text-base md:text-lg shadow-lg shadow-primary/20"
+                                className="px-6 md:px-8 py-3 md:py-4 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-bold text-sm md:text-base shadow-lg shadow-primary/20"
                             >
                                 <span className="flex items-center gap-2 justify-center">
                                     Empezar Gratis
@@ -124,11 +153,11 @@ export default function Hero() {
                             <motion.button
                                 whileHover={isMobile ? {} : { scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="w-auto px-8 md:px-8 py-4 md:py-5 rounded-2xl bg-white border-2 border-gray-100 text-text font-bold text-base md:text-lg shadow-lg hover:border-primary/30"
+                                className="px-4 md:px-6 py-2.5 md:py-3 rounded-full bg-white border-2 border-gray-200 text-text font-bold text-xs md:text-sm shadow-md hover:border-primary/30"
                             >
-                                Ver Demo ▶
+                                Demo ▶
                             </motion.button>
-                        </div>
+                        </motion.div>
                     </motion.div>
 
                     {/* Right: Visual infographic card */}
