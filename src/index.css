@@ -22,6 +22,28 @@
   animation: gradient 4s ease infinite;
 }
 
+/* Animated gradient text - continuous color shift */
+.gradient-text-animated {
+  background: linear-gradient(90deg, #6366F1, #8B5CF6, #F59E0B, #FB7185, #6366F1);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 /* Blob shapes */
 .blob {
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;

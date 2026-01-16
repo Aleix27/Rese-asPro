@@ -97,30 +97,43 @@ export default function Hero() {
                             <span className="text-xs md:text-sm font-bold text-primary">Clientes felices en toda España</span>
                         </motion.div>
 
-                        {/* Main headline - HUGE and ANIMATED */}
-                        <motion.h1
-                            className="text-[4rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] font-black leading-[0.85] mb-6 md:mb-8"
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                        >
-                            <motion.span
-                                className="block text-text"
-                                initial={{ opacity: 0, x: -30 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.5, delay: 0.2 }}
+                        {/* Main headline - HUGE with continuous animation */}
+                        <div className="mb-6 md:mb-8">
+                            {/* Reseñas - MASSIVE */}
+                            <motion.div
+                                animate={{
+                                    scale: [1, 1.02, 1],
+                                }}
+                                transition={{
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                                className="block"
                             >
-                                Reseñas
-                            </motion.span>
-                            <motion.span
-                                className="block gradient-text"
-                                initial={{ opacity: 0, x: 30 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.5, delay: 0.4 }}
+                                <span className="block text-[5rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] font-black leading-[0.8] text-text tracking-tight">
+                                    Reseñas
+                                </span>
+                            </motion.div>
+
+                            {/* que venden - smaller, animated gradient */}
+                            <motion.div
+                                animate={{
+                                    y: [0, -3, 0],
+                                }}
+                                transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: 0.5
+                                }}
+                                className="block"
                             >
-                                que venden
-                            </motion.span>
-                        </motion.h1>
+                                <span className="block text-[2.5rem] sm:text-[3rem] md:text-[4rem] lg:text-[5rem] font-black leading-[1] gradient-text-animated tracking-tight">
+                                    que venden
+                                </span>
+                            </motion.div>
+                        </div>
 
                         {/* Tagline */}
                         <motion.p
@@ -132,7 +145,7 @@ export default function Hero() {
                             Convierte opiniones en clientes. Así de fácil.
                         </motion.p>
 
-                        {/* CTA Buttons - side by side, pill shape */}
+                        {/* CTA Buttons - same height, Demo narrower */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -142,7 +155,7 @@ export default function Hero() {
                             <motion.button
                                 whileHover={isMobile ? {} : { scale: 1.05, boxShadow: "0 20px 40px rgba(99, 102, 241, 0.3)" }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-6 md:px-8 py-3 md:py-4 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-bold text-sm md:text-base shadow-lg shadow-primary/20"
+                                className="px-6 md:px-8 py-3.5 md:py-4 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-bold text-sm md:text-base shadow-lg shadow-primary/20"
                             >
                                 <span className="flex items-center gap-2 justify-center">
                                     Empezar Gratis
@@ -153,7 +166,7 @@ export default function Hero() {
                             <motion.button
                                 whileHover={isMobile ? {} : { scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-4 md:px-6 py-2.5 md:py-3 rounded-full bg-white border-2 border-gray-200 text-text font-bold text-xs md:text-sm shadow-md hover:border-primary/30"
+                                className="px-5 md:px-6 py-3.5 md:py-4 rounded-full bg-white border-2 border-gray-200 text-text font-bold text-sm md:text-base shadow-md hover:border-primary/30"
                             >
                                 Demo ▶
                             </motion.button>
