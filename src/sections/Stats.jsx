@@ -65,8 +65,36 @@ export default function Stats() {
                     </h2>
                 </motion.div>
 
-                {/* Stats cards */}
-                <div className="grid md:grid-cols-3 gap-4 md:gap-8 max-w-5xl mx-auto">
+                {/* Stats cards - horizontal scroll on mobile */}
+                <div className="md:grid md:grid-cols-3 md:gap-8 max-w-5xl mx-auto">
+                    {/* Mobile: horizontal scroll container */}
+                    <div className="flex md:hidden gap-4 overflow-x-auto pb-4 px-4 snap-x snap-mandatory scrollbar-hide -mx-4">
+                        {stats.map((stat, idx) => (
+                            <div
+                                key={idx}
+                                className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100 text-center cursor-default overflow-hidden flex-shrink-0 w-[280px] snap-center"
+                            >
+                                {/* Icon */}
+                                <div className={`w-14 h-14 mx-auto mb-4 ${stat.bgColor} rounded-2xl flex items-center justify-center`}>
+                                    <stat.icon className="w-7 h-7" />
+                                </div>
+
+                                {/* Big number */}
+                                <span className="text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                                    {stat.value}
+                                </span>
+
+                                {/* Label */}
+                                <p className="text-lg font-black text-text mt-3 mb-1">{stat.label}</p>
+                                <p className="text-muted font-medium text-sm">{stat.description}</p>
+
+                                {/* Decorative corner */}
+                                <div className={`absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br ${stat.color} rounded-full opacity-20`} />
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Desktop: grid layout */}
                     {stats.map((stat, idx) => (
                         <motion.div
                             key={idx}
@@ -74,24 +102,24 @@ export default function Stats() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.15 }}
-                            className="relative bg-white rounded-2xl md:rounded-[2rem] p-6 md:p-10 shadow-xl border border-gray-100 text-center cursor-default overflow-hidden"
+                            className="hidden md:block relative bg-white rounded-[2rem] p-10 shadow-xl border border-gray-100 text-center cursor-default overflow-hidden"
                         >
                             {/* Icon */}
-                            <div className={`w-14 h-14 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 ${stat.bgColor} rounded-2xl md:rounded-3xl flex items-center justify-center`}>
-                                <stat.icon className={`w-7 h-7 md:w-10 md:h-10`} />
+                            <div className={`w-20 h-20 mx-auto mb-6 ${stat.bgColor} rounded-3xl flex items-center justify-center`}>
+                                <stat.icon className="w-10 h-10" />
                             </div>
 
                             {/* Big number */}
-                            <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                            <span className="text-6xl lg:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
                                 {stat.value}
                             </span>
 
                             {/* Label */}
-                            <p className="text-lg md:text-xl font-black text-text mt-3 md:mt-4 mb-1 md:mb-2">{stat.label}</p>
-                            <p className="text-muted font-medium text-sm md:text-base">{stat.description}</p>
+                            <p className="text-xl font-black text-text mt-4 mb-2">{stat.label}</p>
+                            <p className="text-muted font-medium text-base">{stat.description}</p>
 
                             {/* Decorative corner */}
-                            <div className={`absolute -top-4 -right-4 w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br ${stat.color} rounded-full opacity-20`} />
+                            <div className={`absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br ${stat.color} rounded-full opacity-20`} />
                         </motion.div>
                     ))}
                 </div>

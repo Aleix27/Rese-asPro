@@ -97,8 +97,8 @@ export default function Hero() {
                             <span className="text-xs md:text-sm font-bold text-primary">Clientes felices en toda España</span>
                         </motion.div>
 
-                        {/* Main headline */}
-                        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-none mb-6 md:mb-8">
+                        {/* Main headline - HUGE on mobile */}
+                        <h1 className="text-6xl sm:text-7xl md:text-7xl lg:text-8xl font-black leading-[0.9] mb-6 md:mb-8">
                             <span className="block text-text">Reseñas</span>
                             <span className="block gradient-text">que venden</span>
                         </h1>
@@ -108,12 +108,12 @@ export default function Hero() {
                             Convierte opiniones en clientes. Así de fácil.
                         </p>
 
-                        {/* CTA Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
+                        {/* CTA Buttons - centered and compact on mobile */}
+                        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 items-center justify-center lg:justify-start">
                             <motion.button
                                 whileHover={isMobile ? {} : { scale: 1.05, boxShadow: "0 20px 40px rgba(99, 102, 241, 0.3)" }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-6 md:px-8 py-4 md:py-5 rounded-xl md:rounded-2xl bg-gradient-to-r from-primary to-secondary text-white font-bold text-base md:text-lg shadow-lg shadow-primary/20"
+                                className="w-auto px-8 md:px-8 py-4 md:py-5 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white font-bold text-base md:text-lg shadow-lg shadow-primary/20"
                             >
                                 <span className="flex items-center gap-2 justify-center">
                                     Empezar Gratis
@@ -124,7 +124,7 @@ export default function Hero() {
                             <motion.button
                                 whileHover={isMobile ? {} : { scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="px-6 md:px-8 py-4 md:py-5 rounded-xl md:rounded-2xl bg-white border-2 border-gray-100 text-text font-bold text-base md:text-lg shadow-lg hover:border-primary/30"
+                                className="w-auto px-8 md:px-8 py-4 md:py-5 rounded-2xl bg-white border-2 border-gray-100 text-text font-bold text-base md:text-lg shadow-lg hover:border-primary/30"
                             >
                                 Ver Demo ▶
                             </motion.button>
